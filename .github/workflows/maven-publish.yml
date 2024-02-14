@@ -9,7 +9,7 @@ on: push
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     permissions:
       contents: read
       packages: write
@@ -24,12 +24,12 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
 
-    - name: Build with Maven
-      run: mvn -B package --file pom.xml
+ #   - name: Build with Maven
+ #     run: mvn -B package --file pom.xml
 
-    - name: Build Docker image
-      uses: docker/build-push-action@v5.1.0
-      with:
-          file: Dockerfile
-          no-cache: True
+ #   - name: Build Docker image
+ #     uses: docker/build-push-action@v5.1.0
+#      with:
+ #         file: Dockerfile
+ #         no-cache: True
       
